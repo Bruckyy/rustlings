@@ -4,9 +4,8 @@
 //
 // Execute `rustlings hint intro2` or use the `hint` watch subcommand for a
 // hint.
-
-// I AM NOT DONE
+/// No macro "printline!" exists, the correct typo is "println!"
 
 fn main() {
-    printline!("Hello there!")
+    println!("Hello there!")
 }
