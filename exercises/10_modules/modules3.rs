@@ -8,10 +8,10 @@
 // Execute `rustlings hint modules3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+/// SystemTime and UNIX_EPOCH are located in time which is located in std
+/// so to import them we can do std::time::{SystemTime, UNIX_EPOCH} (we can import mulitple modules with brackets {})
 // TODO: Complete this use statement
-use ???
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {

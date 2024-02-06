@@ -7,7 +7,8 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/// for is_international function we use a reference to self to not borrow the data, if the package has a different sender and recipient country it's international
+/// for get_fees func we also use a reference to not borrow the data, we use the weight_in_grams field of Package and multiply it by cents_per_gram to obtain the fees
 
 #[derive(Debug)]
 struct Package {
@@ -31,12 +32,16 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    fn is_international(&self) -> bool {
+        if &self.sender_country != &self.recipient_country {
+            true
+        } else {
+            false
+        }
     }
 
-    fn get_fees(&self, cents_per_gram: u32) -> ??? {
-        // Something goes here...
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
+        &self.weight_in_grams * cents_per_gram
     }
 }
 

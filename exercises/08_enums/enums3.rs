@@ -5,10 +5,17 @@
 // Execute `rustlings hint enums3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/// In the enum Message we describe 4 fields, a tuple "Changecolor", a String "Echo", a Point "Move" and Quit
+/// Then we define a pattern matching in the process function on message
+/// In this pattern each arm will help us to set the fields
+/// for example if Message::Move(Point { x: 10, y: 15 }) is passed to the function the 3rd arm will catch it and then change the position
 
 enum Message {
     // TODO: implement the message variant types based on their usage below
+    ChangeColor(u8, u8, u8),
+    Echo(String),
+    Move(Point),
+    Quit,
 }
 
 struct Point {
@@ -44,6 +51,13 @@ impl State {
         // TODO: create a match expression to process the different message variants
         // Remember: When passing a tuple as a function argument, you'll need extra parentheses:
         // fn function((t, u, p, l, e))
+
+        match message {
+            Message::ChangeColor(x, y, z) => self.change_color((255, 0, 255)),
+            Message::Echo(mess) => self.echo("Hello world!".to_string()),
+            Message::Move(point) => self.move_position(Point { x: 10, y: 15 }),
+            Message::Quit => self.quit(),
+        }
     }
 }
 
