@@ -11,8 +11,8 @@
 // Execute `rustlings hint iterators5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
+/// For `count_iterator` we use values() on hashmap to get an iterator on the values then we use filter() to filter and only keep the value we want (None,Some,Complete), then call count() to count the remaining elements
+/// For count_collection_iterator we use iter() to get an iterator on the slice then flatmap() (transform each element of the iterator a single iterator) to have an iterator the iterator directly on the values of the hashmap and finally filter() and count() in the same way as `count_iterator` 
 use std::collections::HashMap;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
@@ -35,7 +35,11 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // map is a hashmap with String keys and Progress values.
     // map = { "variables1": Complete, "from_str": None, ... }
-    todo!();
+    map.values()
+        .filter(|&&progress|
+            progress == value
+        )
+        .count()
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
@@ -54,7 +58,14 @@ fn count_collection_iterator(collection: &[HashMap<String, Progress>], value: Pr
     // collection is a slice of hashmaps.
     // collection = [{ "variables1": Complete, "from_str": None, ... },
     //     { "variables2": Complete, ... }, ... ]
-    todo!();
+    collection.iter()
+        .flat_map(|map|
+            map.values()
+        )
+        .filter(|&&progress|
+            progress == value
+        )
+        .count()
 }
 
 #[cfg(test)]
