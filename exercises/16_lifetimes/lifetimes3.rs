@@ -5,11 +5,11 @@
 // Execute `rustlings hint lifetimes3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/// If we have a struct that hold references we need to add a lifetime annotation on every reference in the struct
 
-struct Book {
-    author: &str,
-    title: &str,
+struct Book<'a> {
+    author: &'a str,
+    title: &'a str,
 }
 
 fn main() {
